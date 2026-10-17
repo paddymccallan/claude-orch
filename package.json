@@ -1,0 +1,11 @@
+{
+  "name": "agent-orchestration-dashboard",
+  "version": "1.0.0",
+  "description": "Node web UI for visualizing running opencode orchestration threads",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "engines": { "node": ">=18" }
+}
