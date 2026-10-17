@@ -71,8 +71,8 @@
           <p class="text-[11px] text-zinc-500 leading-tight">live agent visualizer</p>
         </div>
       </div>
-      <div id="status-pill" class="px-3 py-1.5 rounded-md text-xs font-medium bg-zinc-900 border border-zinc-800 text-zinc-300 shadow-sm">loading…</div>
-      <div id="hb-pill" class="hidden sm:block px-3 py-1.5 rounded-md text-xs font-medium bg-zinc-900 border border-zinc-800 text-zinc-300 shadow-sm">heartbeat…</div>
+      <div id="status-pill" class="hidden sm:block px-3 py-1.5 rounded-md text-xs font-medium bg-zinc-900 border border-zinc-800 text-zinc-300 shadow-sm">loading…</div>
+      <div id="hb-pill" class="px-3 py-1.5 rounded-md text-xs font-medium bg-zinc-900 border border-zinc-800 text-zinc-300 shadow-sm">heartbeat…</div>
       <div id="counts" class="hidden sm:block text-xs text-zinc-500 ml-auto"></div>
       <div id="refresh-info" class="text-xs text-zinc-600"></div>
     </div>
@@ -110,7 +110,7 @@ async function load() {
 function render(d) {
   const sp = document.getElementById('status-pill');
   sp.textContent = d.status || 'no status';
-  sp.className = 'px-3 py-1.5 rounded-md text-xs font-medium bg-emerald-500/10 border border-emerald-500/30 text-emerald-300';
+  sp.className = 'hidden sm:block px-3 py-1.5 rounded-md text-xs font-medium bg-emerald-500/10 border border-emerald-500/30 text-emerald-300';
 
   const hb = document.getElementById('hb-pill');
   hb.textContent = 'heartbeat ' + (d.heartbeat.alive ? 'alive' : 'DEAD');
