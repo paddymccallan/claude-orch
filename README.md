@@ -30,9 +30,9 @@
 ## Quick start
 
 ```bash
-git clone https://github.com/paddymccallan/claude-orch.git ~/claude-orch
-cd ~/claude-orch && ./install.sh
-npm start            # dashboard → http://localhost:4729
+git clone https://github.com/paddymccallan/claude-orch.git ~/claude-orch && \
+  cd ~/claude-orch && ./install.sh && \
+  npm start          # dashboard → http://localhost:4729
 ```
 
 Then follow [`WORKFLOW.md`](WORKFLOW.md).
