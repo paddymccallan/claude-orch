@@ -3,9 +3,11 @@ const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 
-const ROOT = path.join(process.env.HOME, '.local/state/claude-orch');
+const ROOT = process.env.CLAUDE_ORCH_STATE || path.join(require('os').homedir(), '.local/state/claude-orch');
 const THREADS_DIR = path.join(ROOT, 'threads');
 const PORT = process.env.PORT || 4729;
+// Prompts and logs are shown in the UI, so only listen on localhost unless HOST is set (e.g. HOST=0.0.0.0).
+const HOST = process.env.HOST || '127.0.0.1';
 
 function safeRead(p) { try { return fs.readFileSync(p, 'utf8').trim(); } catch { return null; } }
 function pidAlive(pid) {
@@ -167,7 +169,6 @@ const server = http.createServer((req, res) => {
     res.end(JSON.stringify(data));
     return;
   }
-  if (url.pathname === '/api/thread/' ) {}
   // static
   let file = url.pathname === '/' ? '/index.html' : url.pathname;
   const full = path.join(__dirname, 'public', file);
@@ -181,6 +182,6 @@ const server = http.createServer((req, res) => {
   });
 });
 
-server.listen(PORT, () => {
-  console.log(`Agent orchestration dashboard listening on http://localhost:${PORT}`);
+server.listen(PORT, HOST, () => {
+  console.log(`Agent orchestration dashboard on http://${HOST}:${PORT}  (state: ${ROOT})`);
 });
